@@ -10,6 +10,7 @@ export default class CollectingStarScene extends Phaser.Scene {
     init(){
         this.platform = undefined
         this.player = undefined
+        this.star = undefined
     }
 
 
@@ -37,9 +38,22 @@ export default class CollectingStarScene extends Phaser.Scene {
         this.platform.create(400, 568, 'ground').setScale(2).refreshbody()
 
         //Create player
-        // this.player = this.physics.add.sprite(100, 450, 'dude')
-        // this.player.setCollideWorldBounds(true)
         this.player = this.physics.add.sprite(100, 450, 'dude')
+        this.player.setCollideWorldBounds(true)
+        this.physics.add.collider(this.player, this.platform)
+
+        // Create Star
+        this.stars = this.physics.add.group({
+            key: 'star',
+            repeat: 10,
+            setXY: { x: 50, y:0, stepX: 70}
+        });
+        this.physics.add.collider(this.stars, this.platform)
+        this.stars.children.iterate(function(child){
+            // @ts-ignore
+            child.setBounceY(0.5)
+        })
+            
     }
 
 
