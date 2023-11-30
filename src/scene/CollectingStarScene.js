@@ -35,7 +35,7 @@ export default class CollectingStarScene extends Phaser.Scene {
         this.platform.create(600, 400, 'ground')
         this.platform.create(50, 250, 'ground')
         this.platform.create(750, 220, 'ground')
-        this.platform.create(400, 568, 'ground').setScale(2).refreshbody()
+        this.platform.create(400, 568, 'ground').setScale(2).refreshBody()
 
         //Create player
         this.player = this.physics.add.sprite(100, 450, 'dude')
